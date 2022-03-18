@@ -8,7 +8,7 @@ import Logo from 'assets/images/logo.svg'
 const Hero: React.FC = () => {
   return (
     <Wrapper>
-      <img src={Logo}/>
+      <img src={Logo} alt="logo"/>
       <p>Reform React Starter</p>
       <a
         href="https://github.com/reformcollective/component-library"

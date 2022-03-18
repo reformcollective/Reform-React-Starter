@@ -78,7 +78,7 @@ const Scroll: React.FC<Props> = ({ selector }) => {
         if (locomotiveScroll) locomotiveScroll.destroy();
       };
     }
-  }, []);
+  }, [selector]);
 
   return null;
 };

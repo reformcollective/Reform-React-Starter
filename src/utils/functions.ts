@@ -3,3 +3,5 @@ export const vwToPx = (vw: number) => {
 
   return px
 }
+
+export const isBrowser = () => typeof window !== "undefined"

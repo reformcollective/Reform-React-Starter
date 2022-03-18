@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext, Dispatch, SetStateAction } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import { desktop, tablet, mobile } from "styles/media";
 
 export const ScreenContext = createContext({
