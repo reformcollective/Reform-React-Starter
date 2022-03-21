@@ -1,5 +1,5 @@
-import { useContext } from 'react'
-import { ScreenContext } from 'components/Providers'
+import { useContext } from "react";
+import { ScreenContext } from "components/Providers";
 
 export const useMedia = (fw: any, d: any, t: any, m: any) => {
   const screen = useContext(ScreenContext);

@@ -1,28 +1,11 @@
+const fullWidth = {};
 
-const fullWidth = {
+const desktop = {};
 
-}
+const tablet = {};
 
-const desktop = {
+const mobile = {};
 
-}
+const styles = {};
 
-const tablet = {
-
-}
-
-const mobile = {
-
-}
-
-const styles = {
-  
-}
-
-export {
-  fullWidth,
-  desktop,
-  tablet,
-  mobile,
-  styles
-}
+export { fullWidth, desktop, tablet, mobile, styles };

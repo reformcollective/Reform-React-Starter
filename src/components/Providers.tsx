@@ -36,9 +36,7 @@ const Providers: React.FC = ({ children }) => {
   }, []);
 
   return (
-    <ScreenContext.Provider value={screen}>
-      {children}
-    </ScreenContext.Provider>
+    <ScreenContext.Provider value={screen}>{children}</ScreenContext.Provider>
   );
 };
 
