@@ -1,6 +1,8 @@
 declare module "*.svg" {
   import React = require("react");
-  export const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  export const ReactComponent: React.FunctionComponent<
+    React.SVGProps<SVGSVGElement>
+  >;
   const src: string;
   export default src;
 }
@@ -20,7 +22,7 @@ declare module "*.json" {
   export default content;
 }
 
-declare module '*.mp4' {
+declare module "*.mp4" {
   const src: string;
   export default src;
 }

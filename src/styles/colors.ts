@@ -1,7 +1,6 @@
-
 const colors = {
-  blue: '#61dafb',
-  pureBlack: '#000000'
-}
+  blue: "#61dafb",
+  pureBlack: "#000000",
+};
 
-export default colors
+export default colors;
