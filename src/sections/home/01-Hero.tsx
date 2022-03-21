@@ -1,14 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
-import colors from 'styles/colors'
+import colors from "styles/colors";
 
-import Logo from 'assets/images/logo.svg'
+import Logo from "assets/images/logo.svg";
 
 const Hero: React.FC = () => {
   return (
     <Wrapper>
-      <img src={Logo} alt="logo"/>
+      <img src={Logo} alt="logo" />
       <p>Reform React Starter</p>
       <a
         href="https://github.com/reformcollective/component-library"
@@ -25,10 +25,10 @@ const Hero: React.FC = () => {
         Add more hooks from here
       </a>
     </Wrapper>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;
 
 const Wrapper = styled.section`
   min-height: 100vh;
@@ -55,4 +55,4 @@ const Wrapper = styled.section`
     pointer-events: none;
     margin-bottom: 20px;
   }
-`
+`;

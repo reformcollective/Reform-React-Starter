@@ -7,8 +7,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  selector: string
-}
+  selector: string;
+};
 
 const scrollOptions = {
   smooth: true,
@@ -46,8 +46,8 @@ const Scroll: React.FC<Props> = ({ selector }) => {
         window.speed = 0;
         let newSpeed = Math.min(Math.max(obj.speed.toFixed(2), -10), 10);
         if (window.speed !== newSpeed) window.speed = newSpeed;
-        
-        ScrollTrigger.update()
+
+        ScrollTrigger.update();
       });
       locomotiveScroll.on("call", (name: string, dir: string) => {
         const event = new Event(`${name}-${dir}`);
@@ -58,7 +58,9 @@ const Scroll: React.FC<Props> = ({ selector }) => {
 
       ScrollTrigger.scrollerProxy(selector, {
         scrollTop(value: any) {
-          return arguments.length ? locomotiveScroll.scrollTo(value, 0, 0) : locomotiveScroll.scroll.instance.scroll.y;
+          return arguments.length
+            ? locomotiveScroll.scrollTo(value, 0, 0)
+            : locomotiveScroll.scroll.instance.scroll.y;
         },
         getBoundingClientRect() {
           return {
@@ -71,7 +73,9 @@ const Scroll: React.FC<Props> = ({ selector }) => {
         pinType: smoothScroll?.style.transform ? "transform" : "fixed",
       });
 
-      ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
+      ScrollTrigger.addEventListener("refresh", () =>
+        locomotiveScroll.update()
+      );
       ScrollTrigger.refresh();
 
       return () => {

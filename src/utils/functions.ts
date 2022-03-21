@@ -1,7 +1,7 @@
 export const vwToPx = (vw: number) => {
-  const px = vw * (window.innerWidth / 100)
+  const px = vw * (window.innerWidth / 100);
 
-  return px
-}
+  return px;
+};
 
-export const isBrowser = () => typeof window !== "undefined"
+export const isBrowser = () => typeof window !== "undefined";
