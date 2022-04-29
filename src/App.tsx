@@ -9,13 +9,11 @@ import Home from 'pages/Home'
 const App: React.FC = () => {
   return (
     <Wrapper>
-      <Scroll selector=".smooth-scroll"/>
-      
-      <ScrollContainer className="smooth-scroll">
+      <Scroll>
         <Routes>
           <Route path="/" element={<Home/>}/>
         </Routes>
-      </ScrollContainer>
+      </Scroll>
     </Wrapper>
   );
 }
@@ -23,9 +21,5 @@ const App: React.FC = () => {
 export default App;
 
 const Wrapper = styled.main`
-
-`
-
-const ScrollContainer = styled.div`
 
 `

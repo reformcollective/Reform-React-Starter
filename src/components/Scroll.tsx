@@ -1,86 +1,29 @@
-import { useEffect } from "react";
-import LocomotiveScroll from "locomotive-scroll";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap/all";
-import "locomotive-scroll/dist/locomotive-scroll.css";
+import React, { useEffect } from "react"
+import gsap, { ScrollSmoother, ScrollTrigger } from "gsap/all"
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollSmoother, ScrollTrigger)
 
-type Props = {
-  selector: string
+type props = {
+  children: React.ReactNode
 }
 
-const scrollOptions = {
-  smooth: true,
-  getDirection: true,
-  touchMultiplier: 1,
-  multiplier: 1.2,
-  lerp: 0.1,
-  firefoxMultiplier: 100,
-  getSpeed: true,
-  resetNativeScroll: true,
-  smartphone: {
-    smooth: true,
-  },
-  tablet: {
-    smooth: true,
-  },
-};
+const Scroll: React.FC<props> = ({ children }) => {
 
-const Scroll: React.FC<Props> = ({ selector }) => {
   useEffect(() => {
-    const smoothScroll = document.querySelector(selector);
+    ScrollSmoother.create({
+      smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
+      effects: true, // looks for data-speed and data-lag attributes on elements
+      smoothTouch: 0.1
+    })
+  }, [])
 
-    if (smoothScroll) {
-      const locomotiveScroll = new LocomotiveScroll({
-        el: document.querySelector(selector),
-        ...scrollOptions,
-      });
+  return (
+    <div id="smooth-wrapper">
+      <div id="smooth-content">
+        {children}
+      </div>
+    </div>
+  )
+}
 
-      locomotiveScroll.update();
-
-      // Exposing to the global scope for ease of use.
-      window.locomotiveScroll = locomotiveScroll;
-
-      locomotiveScroll.on("scroll", (obj: any) => {
-        window.speed = 0;
-        let newSpeed = Math.min(Math.max(obj.speed.toFixed(2), -10), 10);
-        if (window.speed !== newSpeed) window.speed = newSpeed;
-        
-        ScrollTrigger.update()
-      });
-      locomotiveScroll.on("call", (name: string, dir: string) => {
-        const event = new Event(`${name}-${dir}`);
-        window.dispatchEvent(event);
-      });
-
-      const smoothScroll: HTMLElement | null = document.querySelector(selector);
-
-      ScrollTrigger.scrollerProxy(selector, {
-        scrollTop(value: any) {
-          return arguments.length ? locomotiveScroll.scrollTo(value, 0, 0) : locomotiveScroll.scroll.instance.scroll.y;
-        },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: smoothScroll?.style.transform ? "transform" : "fixed",
-      });
-
-      ScrollTrigger.addEventListener("refresh", () => locomotiveScroll.update());
-      ScrollTrigger.refresh();
-
-      return () => {
-        if (locomotiveScroll) locomotiveScroll.destroy();
-      };
-    }
-  }, [selector]);
-
-  return null;
-};
-
-export default Scroll;
+export default Scroll
